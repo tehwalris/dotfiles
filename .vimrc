@@ -5,6 +5,7 @@ call vundle#rc()
 
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'honza/vim-snippets'
+Plugin 'chriskempson/base16-vim'
 
 filetype plugin indent on " required
 
@@ -25,3 +26,11 @@ if filereadable('/proc/cpuinfo')
 endif
 
 set nowrap
+
+colorscheme base16-default
+set background=dark
+
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=L  "remove left-hand scroll bar
