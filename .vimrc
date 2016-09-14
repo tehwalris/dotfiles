@@ -1,9 +1,12 @@
 set nocompatible " be iMproved
 filetype off " required!
 
-call vundle#rc() 
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'chriskempson/base16-vim'
@@ -13,12 +16,14 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'scrooloose/syntastic'
 Plugin 'lukaszb/vim-web-indent'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-abolish'
 Plugin 'mxw/vim-jsx'
 Plugin 'rust-lang/rust.vim'
 Plugin 'tpope/vim-surround'
 
+call vundle#end() " required
 filetype plugin indent on " required
 
 let g:ctrlp_map = '<c-p>'
@@ -37,7 +42,7 @@ let g:ctrlp_abbrev = {
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_key_list_select_completion=[]
 let g:ycm_key_list_previous_completion=[]
-let g:ycm_server_python_interpreter="/usr/bin/python2"
+let g:ycm_server_python_interpreter="/usr/bin/python3"
 let g:ycm_python_binary_path="/usr/bin/python3"
 let g:ycm_rust_src_path="/usr/src/rust/src"
 
@@ -65,8 +70,15 @@ autocmd CompleteDone * pclose
 
 set nowrap
 
-colorscheme base16-default
-set background=dark
+syntax on
+
+if filereadable(expand("~/.vimrc_background"))
+  set t_Co=256 
+  set termguicolors
+  let g:airline_theme='base16_eighties'
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
 
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
