@@ -9,6 +9,9 @@
 general {
   colors = true
   interval = 5
+  color_good =     '#99C794'  
+  color_degraded = '#F8C662'  
+  color_bad =      '#EC5F67' 
 }
 
 order += "ethernet wwp0s20f0u3i12"
@@ -20,41 +23,43 @@ order += "load"
 order += "tztime local"
 
 wireless wlp4s0 {
-  format_up = "%essid - %ip"
-  format_down = "Wifi down"
+  format_up = " %essid - %ip"
+  format_down = ""
 }
 
 ethernet enp0s31f6 {
 # if you use %speed, i3status requires root privileges
-  format_up = "Ethernet - %ip (%speed)"
-  format_down = "Ethernet down"
+  format_up = " %ip"
+  format_down = ""
 }
 
 ethernet wwp0s20f0u3i12 {
-  format_up = "Cell up"
-  format_down = "Cell down"
+  format_up = ""
+  format_down = ""
 }
 
 battery 0 {
-  format = "Internal battery: %percentage%status"
+  format = "Internal%status %percentage"
   hide_seconds = true
   integer_battery_capacity = true
-  status_chr = " (charging)"
-  status_bat = ""
+  status_chr = " "
+  status_bat = " "
+  status_unk = ""
   status_full = ""
 }
 
 battery 1 {
-  format = "Swapable battery: %percentage%status"
+  format = "External%status %percentage"
   hide_seconds = true
   integer_battery_capacity = true
-  status_chr = " (charging)"
-  status_bat = ""
+  status_chr = " "
+  status_bat = " "
+  status_unk = ""
   status_full = ""
 }
 
 tztime local {
-  format = "%d.%m.%Y %H:%M%P "
+  format = "%d.%m.%Y %H:%M%P    "
 }
 
 load {
